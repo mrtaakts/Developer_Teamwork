@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GenericRepositoryPattern.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220123093737_mig1")]
-    partial class mig1
+    [Migration("20220130091815_mi")]
+    partial class mi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,9 +36,6 @@ namespace GenericRepositoryPattern.Migrations
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -66,9 +63,6 @@ namespace GenericRepositoryPattern.Migrations
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

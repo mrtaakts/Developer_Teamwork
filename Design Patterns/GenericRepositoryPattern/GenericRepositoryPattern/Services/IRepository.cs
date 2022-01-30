@@ -12,6 +12,7 @@ namespace GenericRepositoryPattern.Services
         Task<T> GetById(int id);
         Task<int> Create(T entity);
         Task Update(int id, T entity);
+        Task UpdateStatus(int id);
         Task Delete(int id);
 
     }

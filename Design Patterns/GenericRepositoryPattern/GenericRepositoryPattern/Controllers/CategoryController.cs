@@ -58,10 +58,16 @@ namespace GenericRepositoryPattern.Controllers
             await _categoryRepository.Delete(id);
             return Ok("Silme işlemi başarılı");
         }
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, CategoryUpdateDto category)
         {
             await _categoryRepository.Update(id, _mapper.Map<Category>(category));
+            return Ok("Güncelleme İşlemi Başarılı");
+        }
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateStatus(int id)
+        {
+            await _categoryRepository.UpdateStatus(id);
             return Ok("Güncelleme İşlemi Başarılı");
         }
 

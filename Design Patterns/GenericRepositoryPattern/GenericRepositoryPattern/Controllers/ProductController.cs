@@ -59,10 +59,16 @@ namespace GenericRepositoryPattern.Controllers
             await _productRepository.Delete(id);
             return Ok("Silme işlemi başarılı");
         }
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, ProductUpdateDto product)
         {
             await _productRepository.Update(id, _mapper.Map<Product>(product));
+            return Ok("Güncelleme İşlemi Başarılı");
+        }
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateStatus(int id)
+        {
+            await _productRepository.UpdateStatus(id);
             return Ok("Güncelleme İşlemi Başarılı");
         }
     }

@@ -32,7 +32,7 @@ namespace GenericRepositoryPattern.Services
 
         public IQueryable<T> GetAll()
         {
-            return _context.Set<T>().Where(m=> m.Status==true).AsNoTracking();
+            return _context.Set<T>().Where(m => m.Status == true).AsNoTracking();
         }
 
         public async Task<T> GetById(int id)
@@ -43,6 +43,14 @@ namespace GenericRepositoryPattern.Services
         public async Task Update(int id, T entity)
         {
             entity.Id = id;
+            _context.Set<T>().Update(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateStatus(int id)
+        {
+            var entity = await GetById(id);
+            entity.Status = entity.Status == false ? true : false;
             _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
         }
